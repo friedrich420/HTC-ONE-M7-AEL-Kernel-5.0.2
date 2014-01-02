@@ -3071,5 +3071,15 @@ config IOEXTENDER
 	help
 	 To support IOEXTENDER feature
 
+<<<<<<< HEAD
+=======
+config FORCE_FAST_CHARGE
+	bool "Force AC charge mode at will"
+	default y
+	help
+	  A simple sysfs interface to force adapters that
+	  are detected as USB to charge as AC.
+
+>>>>>>> 27de96b... fastcharge: initial adaptation for HTC One
 endif
 
