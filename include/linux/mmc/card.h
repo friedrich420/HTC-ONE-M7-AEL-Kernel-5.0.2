@@ -258,6 +258,7 @@ struct mmc_wr_pack_stats {
  * MMC device
  */
 struct mmc_card {
+<<<<<<< HEAD
 	struct mmc_host		*host;		/* the host this device belongs to */
 	struct device		dev;		/* the device */
 	struct device		*mmcblk_dev;/* block device */
@@ -303,6 +304,53 @@ struct mmc_card {
 #define MMC_QUIRK_INAND_DATA_TIMEOUT  (1<<8)    /* For incorrect data timeout */
 	unsigned int    	poweroff_notify_state;	/* eMMC4.5 notify
 							   feature */
+=======
+	struct mmc_host		*host;		
+	struct device		dev;		
+	struct device		*mmcblk_dev;
+	unsigned int		rca;		
+	unsigned int		type;		
+#define MMC_TYPE_MMC		0		
+#define MMC_TYPE_SD		1		
+#define MMC_TYPE_SDIO		2		
+#define MMC_TYPE_SDIO_WIMAX	3		
+#define MMC_TYPE_SDIO_SVLTE	4		
+#define MMC_TYPE_SD_COMBO	5		
+#define MMC_TYPE_SDIO_WIFI	6		
+	unsigned int		state;		
+#define MMC_STATE_PRESENT	(1<<0)		
+#define MMC_STATE_READONLY	(1<<1)		
+#define MMC_STATE_HIGHSPEED	(1<<2)		
+#define MMC_STATE_BLOCKADDR	(1<<3)		
+#define MMC_STATE_HIGHSPEED_DDR (1<<4)		
+#define MMC_STATE_ULTRAHIGHSPEED (1<<5)		
+#define MMC_CARD_SDXC		(1<<6)		
+#define MMC_CARD_REMOVED	(1<<7)		
+#define MMC_STATE_HIGHSPEED_200	(1<<8)		
+#define MMC_STATE_SLEEP		(1<<9)		
+#define MMC_STATE_NEED_BKOPS	(1<<10)		
+#define MMC_STATE_DOING_BKOPS	(1<<11)		
+#define MMC_STATE_CHECK_BKOPS	(1<<12)		
+#define MMC_STATE_NEED_SANITIZE		(1<<13)		
+#define MMC_STATE_DOING_SANITIZE	(1<<14)		
+	unsigned int		quirks; 	
+#define MMC_QUIRK_LENIENT_FN0	(1<<0)		
+#define MMC_QUIRK_BLKSZ_FOR_BYTE_MODE (1<<1)	
+						
+#define MMC_QUIRK_NONSTD_SDIO	(1<<2)		
+						
+#define MMC_QUIRK_BROKEN_CLK_GATING (1<<3)	
+#define MMC_QUIRK_NONSTD_FUNC_IF (1<<4)		
+#define MMC_QUIRK_DISABLE_CD	(1<<5)		
+#define MMC_QUIRK_INAND_CMD38	(1<<6)		
+#define MMC_QUIRK_BLK_NO_CMD23	(1<<7)		
+#define MMC_QUIRK_BROKEN_BYTE_MODE_512 (1<<8)	
+#define MMC_QUIRK_LONG_READ_TIME (1<<9)
+#define MMC_QUIRK_SEC_ERASE_TRIM_BROKEN (1<<10)	/* Skip secure for erase/trim */
+						
+#define MMC_QUIRK_INAND_DATA_TIMEOUT  (1<<8)    
+	unsigned int    	poweroff_notify_state;	
+>>>>>>> ab29661... PATCH: Linux 3.4.12
 #define MMC_NO_POWER_NOTIFICATION	0
 #define MMC_POWERED_ON			1
 
