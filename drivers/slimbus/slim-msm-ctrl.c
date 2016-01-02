@@ -233,8 +233,8 @@ enum mgr_intr {
 enum frm_cfg {
 	FRM_ACTIVE	= 1,
 	CLK_GEAR	= 7,
-	ROOT_FREQ	= 11,
-	REF_CLK_GEAR	= 15,
+	ROOT_FREQ	= 10,
+	REF_CLK_GEAR	= 31,
 };
 
 enum msm_ctrl_state {
