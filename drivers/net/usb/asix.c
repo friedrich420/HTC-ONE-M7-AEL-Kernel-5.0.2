@@ -1580,15 +1580,7 @@ static const struct usb_device_id	products [] = {
 	USB_DEVICE (0x0b95, 0x7720),
 	.driver_info = (unsigned long) &ax88772_info,
 }, {
-<<<<<<< HEAD
 	// ASIX AX88178 10/100/1000
-=======
-   // DLink DUB-E100 H/W Ver C1
-       USB_DEVICE (0x2001, 0x1a02),
-       .driver_info = (unsigned long) &ax88772_info,
-}, {
-	
->>>>>>> ab29661... PATCH: Linux 3.4.12
 	USB_DEVICE (0x0b95, 0x1780),
 	.driver_info = (unsigned long) &ax88178_info,
 }, {

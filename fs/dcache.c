@@ -369,15 +369,11 @@ static struct dentry *d_kill(struct dentry *dentry, struct dentry *parent)
 	__releases(dentry->d_inode->i_lock)
 {
 	list_del(&dentry->d_u.d_child);
-<<<<<<< HEAD
 	/*
 	 * Inform try_to_ascend() that we are no longer attached to the
 	 * dentry tree
 	 */
 	dentry->d_flags |= DCACHE_DISCONNECTED;
-=======
-	dentry->d_flags |= DCACHE_DENTRY_KILLED;
->>>>>>> ab29661... PATCH: Linux 3.4.12
 	if (parent)
 		spin_unlock(&parent->d_lock);
 	dentry_iput(dentry);
@@ -1034,7 +1030,7 @@ static struct dentry *try_to_ascend(struct dentry *old, int locked, unsigned seq
 	 * or deletion
 	 */
 	if (new != old->d_parent ||
-		 (old->d_flags & DCACHE_DENTRY_KILLED) ||
+		 (old->d_flags & DCACHE_DISCONNECTED) ||
 		 (!locked && read_seqretry(&rename_lock, seq))) {
 		spin_unlock(&new->d_lock);
 		new = NULL;

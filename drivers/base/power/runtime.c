@@ -521,6 +521,7 @@ static int rpm_suspend(struct device *dev, int rpmflags)
 		goto repeat;
 	}
 
+	dev->power.deferred_resume = false;
 	if (dev->power.no_callbacks)
 		goto no_callback;	/* Assume success. */
 
@@ -651,17 +652,10 @@ static int rpm_suspend(struct device *dev, int rpmflags)
 		#if defined(CONFIG_USB_EHCI_MSM_HSIC)
 		if (dev && dev->power.htc_hsic_dbg_enable)
 			dev_info(dev, "%s[%d] rpm_resume+ deferred_resume:%d\n", __func__, __LINE__, dev->power.deferred_resume);
-<<<<<<< HEAD
 		#endif	//CONFIG_USB_EHCI_MSM_HSIC
 		//--------------------------------------------------------
 		/* --SSD_RIL */
 
-=======
-		#endif	
-		
-		
-		dev->power.deferred_resume = false;
->>>>>>> ab29661... PATCH: Linux 3.4.12
 		rpm_resume(dev, 0);
 
 		/* ++SSD_RIL */
@@ -1117,7 +1111,7 @@ static int rpm_resume(struct device *dev, int rpmflags)
 	wake_up_all(&dev->power.wait_queue);
 	if ( log_enable == 1 )
 		dev_info(dev, "%s[%d] wake_up_all-\n", __func__, __LINE__);
-	if (!retval >= 0) {
+	if (!retval) {
 		if ( log_enable == 1 )
 			dev_info(dev, "%s[%d] rpm_idle+\n", __func__, __LINE__);
 		rpm_idle(dev, RPM_ASYNC);

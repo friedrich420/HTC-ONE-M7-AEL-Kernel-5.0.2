@@ -8,7 +8,6 @@
 #ifndef _ASM_MUTEX_H
 #define _ASM_MUTEX_H
 
-<<<<<<< HEAD
 #if __LINUX_ARM_ARCH__ < 6
 /* On pre-ARMv6 hardware the swp based implementation is the most efficient. */
 # include <asm-generic/mutex-xchg.h>
@@ -133,8 +132,4 @@ __mutex_fastpath_trylock(atomic_t *count, int (*fail_fn)(atomic_t *))
 }
 
 #endif
-=======
-#include <asm-generic/mutex-xchg.h>
-
->>>>>>> ab29661... PATCH: Linux 3.4.12
 #endif
